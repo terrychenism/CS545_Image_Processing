@@ -1,4 +1,3 @@
-
 import ij.ImagePlus;
 import ij.plugin.filter.PlugInFilter;
 import ij.process.ImageProcessor;
@@ -16,8 +15,9 @@ public class Power_Transform implements PlugInFilter {
 
 		for (int v = 0; v < h; v++) {
 			for (int u = 0; u < w; u++) {
-				int i = ip.getPixel(u, v);
-				ip.putPixelValue(u, v, Math.pow(i,0.9));
+				double i = ip.getPixel(u, v);
+				i = i/255;
+				ip.putPixelValue(u, v, 255*Math.pow(i,0.9));
 			}
 		}
 
