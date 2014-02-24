@@ -7,15 +7,15 @@ import ij.plugin.filter.PlugInFilter;
 import ij.process.ImageProcessor;
 
 
-public class histogram_spec_average implements PlugInFilter {
+public class istogram_spec_average implements PlugInFilter {
 
 	public int setup(String arg, ImagePlus img) {
 		return DOES_8G; 
 	}
 
 			
-	 	ImageProcessor ipA; // target image IA (to be modified)
-		ImageProcessor ipR; // reference image IR		
+	 	//ImageProcessor ipA; // target image IA (to be modified)
+		ImagePlus fgIm = null; // reference image IR		
 			
 		
 		int[] matchHistograms (int[] hA, int[] hR) {
@@ -58,11 +58,12 @@ public class histogram_spec_average implements PlugInFilter {
 		
 
 
-		public void run(ImageProcessor ip) {
+		public void run(ImageProcessor ipA) {
 			
 			if(runDialog()) {
 			// TODO Auto-generated method stub
 				int[] hA = ipA.getHistogram(); // get the histogram for IA
+				ImageProcessor ipR = fgIm.getProcessor().convertToByte(false);
 				int[] hR = ipR.getHistogram(); // get the histogram for IR
 				int[] F = matchHistograms(hA, hR); // mapping function fhs(a)
 				ipA.applyTable(F);
@@ -94,13 +95,12 @@ public class histogram_spec_average implements PlugInFilter {
 				return false;
 			else {
 				int img2Index = gd.getNextChoiceIndex();
-				ipR = WindowManager.getImage(windowList[img2Index]);
+				fgIm = WindowManager.getImage(windowList[img2Index]);
 				return true;
 			}
 		}
 
 }
 		
-
 
 
