@@ -11,7 +11,7 @@ public class Laplacian_Filter_with_c implements PlugInFilter {
     public void run(ImageProcessor orig) {
         int w = orig.getWidth();
         int h = orig.getHeight();
-        //3x3 filter matrix
+        //3x3 filter matrix   c=2
         double[][] filter = {{0,-0.5,0},
                              {-0.5,3,-0.5},
                              {0,-0.5,0}};
