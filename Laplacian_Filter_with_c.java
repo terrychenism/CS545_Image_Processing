@@ -12,9 +12,9 @@ public class Laplacian_Filter_with_c implements PlugInFilter {
         int w = orig.getWidth();
         int h = orig.getHeight();
         //3x3 filter matrix
-        double[][] filter = {{0,1,0},
-                             {1,-4,1},
-                             {0,1,0}};
+        double[][] filter = {{0,-0.5,0},
+                             {-0.5,3,-0.5},
+                             {0,-0.5,0}};
         
         ImageProcessor copy = orig.duplicate();
 
