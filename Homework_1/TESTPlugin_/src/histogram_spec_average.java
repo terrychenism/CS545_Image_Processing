@@ -5,7 +5,7 @@ import ij.gui.GenericDialog;
 import ij.plugin.filter.PlugInFilter;
 import ij.process.*;
 
-public class TESTPlugin_ implements PlugInFilter {
+public class histogram_spec_average implements PlugInFilter {
     static double alpha = 0.5; 
     ImagePlus[] fgIm = new ImagePlus[100]; // reference image
     int[] windowList = WindowManager.getIDList();
@@ -99,9 +99,8 @@ public class TESTPlugin_ implements PlugInFilter {
 
         GenericDialog gd = new GenericDialog("Histogram Matching");
          gd.addMessage("target images:");
-       // for(int i = 0;i<windowList.length-1;i++){
          gd.addMessage("         "+windowTitles[windowList.length-1]);
-       // }
+
         
          gd.showDialog();
          if (gd.wasCanceled())

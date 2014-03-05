@@ -30,19 +30,33 @@ public class AutoContrast_quantiles implements PlugInFilter {
 		double b= w*h*0.99;
 		int high = (int)b;
 		
+		int numPoint = 0;
+
 		
 		for(int i=0;i<=255;i++){
-			if(H[i] > low)  {
+			
+			if(numPoint > low)  {
+				
 				min=i;
+				System.out.println(min);
 				break;
 			}
 			
+			numPoint = numPoint + H[i];
+			
+			
 		}
+		
+		numPoint = w*h;
 		for(int i=255;i>=0;i--){
-			if(H[i] < high) {
+			
+			if(numPoint <= high) {
 				max=i;
+				System.out.println(max);
 				break;
 			}
+			numPoint = numPoint - H[i];
+			
 			
 		}
 		
@@ -54,7 +68,7 @@ public class AutoContrast_quantiles implements PlugInFilter {
 					if(j<min) 
 						ip.putPixelValue(u, v, 0);
 					else if(j>max) 
-						ip.putPixelValue(u, v, 1);
+						ip.putPixelValue(u, v, 255);
 					else 
 						ip.putPixelValue(u, v, (j-min)*255/(max-min) );
 					
