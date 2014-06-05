@@ -1,4 +1,4 @@
-CS545_Image_Processing
+Image_Processing
 ======================
 
-for CS 545 homework
+CS 545 homework and coursera 
